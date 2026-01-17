@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Microsoft – Anmelden</title>
+  <style>
+    body {
+      font-family: Segoe UI, system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+      background: #f3f2f1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .card {
+      background: #ffffff;
+      width: 360px;
+      border-radius: 2px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      padding: 28px 32px 32px;
+      position: relative;
+    }
+    .logo {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    h1 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin: 8px 0 12px;
+    }
+    label {
+      display: block;
+      margin-top: 14px;
+      font-size: 0.9rem;
+      color: #1f2937;
+    }
+    input {
+      width: 100%;
+      padding: 8px 6px;
+      margin-top: 6px;
+      border: none;
+      border-bottom: 1px solid #8a8886;
+      outline: none;
+      font-size: 0.95rem;
+    }
+    input:focus { border-bottom: 2px solid #0078d4; }
+    .actions {
+      margin-top: 22px;
+      display: flex;
+      justify-content: flex-end;
+    }
+    button {
+      padding: 8px 18px;
+      border: none;
+      background: #0078d4;
+      color: #ffffff;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+    button:hover { background: #106ebe; }
+    .footer {
+      margin-top: 18px;
+      font-size: 0.72rem;
+      color: #605e5c;
+    }
+    /* Overlay für verzögerte Aufklärung */
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(255,255,255,0.97);
+      display: none;
+      padding: 24px;
+    }
+    .overlay h2 {
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+    }
+    .overlay p {
+      font-size: 0.9rem;
+      line-height: 1.4;
+      margin-bottom: 10px;
+    }
+    .overlay ul {
+      font-size: 0.9rem;
+      margin: 8px 0 12px 18px;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="logo">Microsoft</div>
+    <h1>Anmelden</h1>
+
+    <form onsubmit="event.preventDefault(); reveal();">
+      <label for="email">E-Mail-Adresse, Telefon oder Skype</label>
+      <input id="email" type="text" placeholder="name@beispiel.de" autocomplete="off" />
+
+      <label for="password">Kennwort</label>
+      <input id="password" type="password" placeholder="••••••••" autocomplete="off" />
+
+      <div class="actions">
+        <button type="submit">Weiter</button>
+      </div>
+    </form>
+
+    <div class="footer">© Microsoft · Datenschutz · Nutzungsbedingungen</div>
+
+    <div class="overlay" id="overlay">
+      <h2>Stopp – Sicherheitsübung</h2>
+      <p>
+        Du hast gerade versucht, dich bei einer realistisch aussehenden Anmeldeseite einzuloggen.
+        <strong>Es wurden keine Daten übertragen oder gespeichert.</strong>
+      </p>
+      <p>Reflexion:</p>
+      <ul>
+        <li>Hast du die URL geprüft?</li>
+        <li>War HTTPS vorhanden?</li>
+        <li>Hättest du hier dein echtes Passwort eingegeben?</li>
+      </ul>
+      <p>
+        Merke: Auch bekannte Marken können täuschend echt gefälscht werden.
+        Prüfe immer Kontext, Adresse und Verbindung, bevor du Anmeldedaten eingibst.
+      </p>
+      <button onclick="resetForm()">Verstanden</button>
+    </div>
+  </div>
+
+  <script>
+    function reveal() {
+      document.getElementById('overlay').style.display = 'block';
+      // Eingaben sofort verwerfen
+      document.getElementById('email').value = '';
+      document.getElementById('password').value = '';
+    }
+    function resetForm() {
+      document.getElementById('overlay').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
